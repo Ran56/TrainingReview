@@ -23,7 +23,7 @@ public class DepartmentDaoTest {
     public void getDepartmentsTest(){
 
         logger.debug("start unit test for getDepartments");
-        assertEquals(4,departmentJDBCDao.getDepartments().size());
+        assertEquals(5,departmentJDBCDao.getDepartments().size());
     }
 
 
