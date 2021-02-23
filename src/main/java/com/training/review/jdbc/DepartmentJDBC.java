@@ -1,7 +1,7 @@
 package com.training.review.jdbc;
 
-public class Department {
-    public Department(){}
+public class DepartmentJDBC {
+    public DepartmentJDBC(){}
 
     private long id;
     private String name;

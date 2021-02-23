@@ -1,6 +1,6 @@
 package com.training.review.jdbc;
 
-public class Employee {
+public class EmployeeJDBC {
     public static void main(String[] args) {
     }
 }

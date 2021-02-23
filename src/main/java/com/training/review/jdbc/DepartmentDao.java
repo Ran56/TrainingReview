@@ -17,8 +17,8 @@ public class DepartmentDao {
     static final String USER = "admin";
     static final String PASS = "password";
 
-    public List<Department> getDepartments(){
-        List<Department> departments = new ArrayList();
+    public List<DepartmentJDBC> getDepartments(){
+        List<DepartmentJDBC> departments = new ArrayList();
         Connection conn = null;
         Statement stmt = null;
         ResultSet rs = null;
@@ -40,7 +40,7 @@ public class DepartmentDao {
                 String description = rs.getString("description");
                 String location = rs.getString("location");
                 //Fill the object
-                Department department = new Department();
+                DepartmentJDBC department = new DepartmentJDBC();
                 department.setId(id);
                 department.setName(name);
                 department.setDescription(description);
