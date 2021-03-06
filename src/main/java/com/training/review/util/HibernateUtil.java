@@ -1,6 +1,8 @@
 package com.training.review.util;
 
+import com.github.fluent.hibernate.H;
 import com.github.fluent.hibernate.cfg.scanner.EntityScanner;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -20,11 +22,16 @@ public class HibernateUtil {
         if(sessionFactory==null)
         {
             String[] modelPackages = {"com.training.review"};
-            String dbDriver = "org.postgresql.Driver";
-            String dbDialect = "org.hibernate.dialect.PostgreSQL9Dialect";
-            String dbUrl = "jdbc:postgresql://localhost:5411/TA";
-            String dbUser = "admin";
-            String dbPassword = "password!";
+//            String dbDriver = "org.postgresql.Driver";
+//            String dbDialect = "org.hibernate.dialect.PostgreSQL9Dialect";
+//            String dbUrl = "jdbc:postgresql://localhost:5411/TA";
+//            String dbUser = "admin";
+//            String dbPassword = "password!";
+            String dbDriver = System.getProperty("database.driver");
+            String dbDialect = System.getProperty("database.dialect");
+            String dbUrl = System.getProperty("database.url");
+            String dbUser = System.getProperty("database.user");
+            String dbPassword = System.getProperty("database.password");
 
             Configuration configuration = new Configuration();
             Properties settings = new Properties();
@@ -44,6 +51,15 @@ public class HibernateUtil {
             sessionFactory = configuration.buildSessionFactory(serviceRegistry);
         }
         return sessionFactory;
+    }
+
+    public static void main(String[] args) {
+
+        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
+        logger.info("this is sessionFactory "+sessionFactory.hashCode());
+        Session session = sessionFactory.openSession();
+        logger.info("this is session "+session.hashCode());
+        session.close();
     }
 
 
